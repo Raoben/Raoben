@@ -1,32 +1,14 @@
 
+from doctest import master
 from fileinput import filename
 import tkinter as tk
-from tkinter import filedialog, Text
+from tkinter import filedialog
 import os
-from turtle import bgcolor
+from tkinter.ttk import Labelframe
 from tkinter import *
-import webbrowser
-from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
-from pdfminer.converter import TextConverter
-from pdfminer.pdfpage import PDFPage
-from io import BytesIO
-import argparse
-import fnmatch
+from tkinter.filedialog import askopenfilenames
 
-
-root = tk.Tk() 
-
-def Uploadaction(event=None): 
-    filename = filedialog.askopenfilename(initialdir="/", title="Select File")
-
-def open_book():
-    books = []
-    for file in os.listdir("Plocklistor"):
-        if fnmatch.fnmatch(file, '*.PDF'):
-            books.append(file)
-    return books
-
-
+root = tk.Tk()
 #This is Frame with AudiRed
 canvas = tk.Canvas(root, height=600, width=600, bg="#b51c14")
 canvas.pack()
@@ -34,24 +16,16 @@ canvas.pack()
 #this is white templet
 frame = tk.Frame(root, bg="white")
 frame.place(relwidth=0.8, relheight=0.8, relx=0.1, rely=0.1)
+ 
 
-#Buttom Openfile
-Openfile = tk.Button(root, text="open file", padx=10, pady=5,
-                     fg="white", bg="#8C00E6", command=open_book)
-Openfile.pack() 
-
-#Button Print PPG
-PrintPPG = tk.Button(root, text="Pint PPG", padx=10, pady=5,
-                          fg="white", bg="#8C00E6",command=Uploadaction)
+#Button UPDATE LIST
+PrintPPG = tk.Button(root, text="UPDATE LIST", padx=10, pady=5,
+                          fg="white", bg="#8C00E6",)
 PrintPPG.pack() 
 
-def Openweb():
-    webbrowser.open(Url)
-
-Url = "https://random-ize.com/bad-jokes/"
-
-#Button Jokes
-JokeButton = tk.Button(root, text="Jokes Button", padx=10, pady=3, fg="white", bg="#8C00E6", command=Openweb)
-JokeButton.pack()
+#Youtube Filedialog code
+master = ()
+root.filename = filedialog.askopenfilenames(initialdir="/Plocklistor", title="Select A File", filetypes=(("pdf files", "*.pdf"),("all files", "*.*")))
+my_label = Label(frame, text=root.filename).pack()
 
 root.mainloop() 
