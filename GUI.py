@@ -9,6 +9,7 @@ from tkinter import *
 from tkinter.filedialog import askopenfilenames
 
 root = tk.Tk()
+from os import walk
 #This is Frame with AudiRed
 canvas = tk.Canvas(root, height=600, width=600, bg="#b51c14")
 canvas.pack()
